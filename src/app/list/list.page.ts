@@ -37,7 +37,9 @@ export class ListPage implements OnInit {
       data => {
         console.log(data);
        // this.items = (<any> data).reduce((acc, x) => [...acc, ...x.results.map(y => ({title: y.name}))], []);
-        this.items = [...this.items, ...(<any>data).results.map(x => ({ title: x.name }))];
+        this.items = [...this.items, ...(<any>data).results
+          //.filter(x => x.films.length > 0)
+          .map(x => ({ title: x.name, ...x }))];
         //this.items = this.items.filter(x => x.title.startsWith('E'));
         console.log(this.items);
         this.items.sort((a,b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : ((b.title.toLowerCase() > a.title.toLowerCase()) ? -1 : 0));
