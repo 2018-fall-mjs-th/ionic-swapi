@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin } from 'rxjs';
-import { merge } from 'rxjs/operators'
+import { Observable, merge } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +20,7 @@ export class SwapiService {
     let p7 = this.httpSvc.get('https://swapi.co/api/planets/?page=7');
 
     //return forkJoin(p1, p2, p3);
-
-    return p1.pipe(merge(p2, p3, p4, p5, p6, p7));
+    return merge(p1, p2, p3, p4, p5, p6, p7);
     //return p1.combineLatest(p2);
   }
 }
