@@ -18,7 +18,7 @@ export class SwapiService {
 
     //return forkJoin(p1, p2, p3);
 
-    return p1.pipe(merge(p2));
+    return p1.pipe(merge(p2, p3));
     //return p1.combineLatest(p2);
   }
 }
