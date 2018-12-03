@@ -22,22 +22,23 @@ export class ListPage implements OnInit {
   ];
   public items: Array<{ title: string; note: string; icon: string }> = [];
   constructor(private swapiSvc: SwapiService) {
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+    // for (let i = 1; i < 11; i++) {
+    //   this.items.push({
+    //     title: 'Item ' + i,
+    //     note: 'This is item #' + i,
+    //     icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+    //   });
+    // }
   }
 
   ngOnInit() {
+    
     this.swapiSvc.getListOfPlanets().subscribe(
       data => {
         console.log(data);
-        this.items = (<any> data).results.map(x => ({ 
-          title: x.name
-        }))
+        this.items = (<any> data).reduce((acc, x) => [...acc, ...x.results.map(y => ({title: y.name}))], []);
+        console.log(this.items);
+        this.items.sort((a,b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : ((b.title.toLowerCase() > a.title.toLowerCase()) ? -1 : 0));
       }
       , error => console.log(error)
     );
