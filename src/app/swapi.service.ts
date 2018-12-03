@@ -9,6 +9,7 @@ export class SwapiService {
   constructor(private httpSvc: HttpClient) { }
 
   public getListOfPlanets() {
-    console.log('getListOfPlanets()');
+    //console.log('getListOfPlanets()');
+    return this.httpSvc.get('https://swapi.co/api/planets');
   }
 }

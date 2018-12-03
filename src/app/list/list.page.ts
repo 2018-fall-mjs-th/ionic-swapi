@@ -32,7 +32,15 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
-    this.swapiSvc.getListOfPlanets();
+    this.swapiSvc.getListOfPlanets().subscribe(
+      data => {
+        console.log(data);
+        this.items = (<any> data).results.map(x => ({ 
+          title: x.name
+        }))
+      }
+      , error => console.log(error)
+    );
   }
   // add back when alpha.4 is out
   // navigate(item) {
