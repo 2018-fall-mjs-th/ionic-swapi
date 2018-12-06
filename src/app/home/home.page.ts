@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppStateService } from '../app-state.service';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  constructor(private appStateSvc: AppStateService) {
+    appStateSvc.title = "Foo";
+  }
 }
