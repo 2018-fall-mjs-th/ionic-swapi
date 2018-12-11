@@ -33,9 +33,10 @@ export class SwapiService {
       'Access-Control-Allow-Origin': '*'
     });
 
-    
-    return this.httpSvc.get(pageUrl, {
-      headers: h
-    });
+    return this.httpSvc.get(pageUrl);
+
+    // return this.httpSvc.get(pageUrl, {
+    //   headers: h
+    // });
   }
 }
