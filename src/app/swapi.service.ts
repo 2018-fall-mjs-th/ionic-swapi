@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, empty, merge } from 'rxjs';
 import { expand } from 'rxjs/operators';
 
@@ -28,6 +28,14 @@ export class SwapiService {
   }
 
   private getPage(pageUrl) {
-    return this.httpSvc.get(pageUrl);
+
+    let h = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*'
+    });
+
+    
+    return this.httpSvc.get(pageUrl, {
+      headers: h
+    });
   }
 }
