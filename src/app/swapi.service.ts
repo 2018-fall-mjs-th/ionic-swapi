@@ -30,13 +30,13 @@ export class SwapiService {
   private getPage(pageUrl) {
 
     let h = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*'
+      'Origin': ''
     });
 
-    return this.httpSvc.get(pageUrl);
+    // return this.httpSvc.get(pageUrl);
 
-    // return this.httpSvc.get(pageUrl, {
-    //   headers: h
-    // });
+    return this.httpSvc.get(pageUrl, {
+      headers: h
+    });
   }
 }
