@@ -30,7 +30,7 @@ export class SwapiService {
   private getPage(pageUrl) {
 
     let h = new HttpHeaders({
-      'Origin': ''
+      'Origin': 'https://2018-fall-mjs-th.github.io/ionic-swapi/'
     });
 
     // return this.httpSvc.get(pageUrl);
